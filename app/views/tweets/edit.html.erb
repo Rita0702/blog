@@ -1,0 +1,19 @@
+<div class="contents row">
+  <div class="container">
+    <%= form_for(@tweet) do |f| %>
+      <h3>
+        編集する
+      </h3>
+      <div class="field">
+        <%= f.label :image %><br />
+        <%= f.text_field :image, autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :text %><br />
+        <%= f.text_area :text, autofocus: true %>
+      </div>
+      <div class="actions">
+        <%= f.submit "SENT" %>
+      </div>
+    <% end %>
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Unica+One::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  </head>
+
+  <body>
+
+  <div class="buttons are-medium">
+    <% if user_signed_in? %>
+      <a class="button is-primary" href="/users/<%= current_user.id %>">マイページ</a>
+      <a class="button is-primary" href="/users/sign_out">ログアウト</a>
+      <a class="button is-primary" href="/tweets/new">投稿する</a>
+    <% else %> 
+      <a class="button is-primary" href="/users/sign_in">ログイン</a>
+      <a class="button is-primary" href="/users/sign_up">新規登録</a>
+    <% end %>
+  </div>
+
+  <section class="hero is-primary">
+    <div class="hero-body">
+      <div class="container">
+        <a href="/" class="title">blog</a>
+      </div>
+    </div>
+  </section>
+
+  <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3" style="background-image: url(<%= tweet.image %>);"></figure>
+    </div>
+    <header class="card-header">
+    <p class="card-header-title">
+      みんブロ！ shared
+    </p>
+    <a href="#" class="card-header-icon" aria-label="more options">
+      <span class="icon">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </a>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <%= simple_format(tweet.text) %>
+      <a href="#"><%= tweet.user.nickname %></a>
+      <br>
+      <time datetime="2016-1-1"><%= tweet.created_at %></time>
+    </div>
+  </div>
+  <footer class="card-footer">
+  <ul>
+      <li>
+        <%= link_to "詳細", tweet_path(tweet.id), method: :get %>
+      </li>
+    <% if user_signed_in? && current_user.id == tweet.user_id %>
+      <li>
+        <%= link_to '編集', "/tweets/#{tweet.id}/edit", method: :get %>
+      </li>
+      <li>
+        <%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %>
+      </li>
+    <% end %>
+    </ul>
+  </footer>
+</div>
